@@ -32,6 +32,8 @@ def create_item(request):
 def item_list(request):
     # get search query from URL and remove whitespace
     query = request.GET.get('q', '').strip()
+    # get report type from URL
+    report_type = request.GET.get('report_type', '')
     # show active items w/ newest first
     items = Item.objects.filter(status__in=['open', 'claim_in_review']).order_by('-created_at')
     # filter items when search query is given
@@ -41,9 +43,14 @@ def item_list(request):
             items.filter(description__icontains=query) |
             items.filter(location__icontains=query)
         ).order_by('created_at')
+    # filter items by lost/found when selected
+    if report_type in ['lost', 'found']:
+        items = items.filter(report_type=report_type)
+    else:
+        report_type = ''
 
-    # display item listings
-    return render(request, 'items/item_list.html', {'items': items, 'query': query})
+    # display item listings 
+    return render(request, 'items/item_list.html', {'items': items, 'query': query, 'report_type': report_type})
 
 
 # require users to be logged in to delete items 
