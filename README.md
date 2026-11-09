@@ -6,6 +6,8 @@ Web application to quickly and easily report and find lost items around campus.
 
 ## Local Dev Setup for group
 
+(terminal commands for macOS/Linux)
+
 ### 1. create virtual environment
 
 ```
