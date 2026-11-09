@@ -16,9 +16,9 @@ class ItemForm(forms.ModelForm):
             'photo',
         ]
 
-    # get time and date from browser
-    widgets = {
-        "date_lost_or_found": forms.DateInput(attrs={"type":"date"}), 
-        "time_found": forms.TimeInput(attrs={"type":"time"}),
-    }
+        # get time and date from browser
+        widgets = {
+            "date_lost_or_found": forms.DateInput(attrs={"type":"date"}), 
+            "time_lost_or_found": forms.TimeInput(attrs={"type":"time"}),
+        }
 
