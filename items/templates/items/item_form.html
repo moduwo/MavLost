@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report an Item | MavLost</title>
+    <!-- set title -->
+    <title>{% if form.instance.pk %}Edit Item{% else %}Report an Item{% endif %}</title>
 </head>
 <body>
-   <h1>Report a Lost or Found Item</h1>
+   <h1>
+        {% if form.instance.pk %}
+            Edit Item
+        {% else %}
+            Report an Item
+        {% endif %}
+   </h1>
 
    <!-- submit form for reporting lost/found item -->
    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}    
         {{ form.as_p }}
-        <button type="submit">Submit</button>
+        <button type="submit">
+            {% if form.instance.pk %}
+                Save Changes
+            {% else %}
+                Submit Report
+            {% endif %}</button>
    </form>
 
    <!-- link to return to homepage -->

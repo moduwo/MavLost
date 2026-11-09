@@ -11,6 +11,14 @@
     <!-- link to lost/found item report form -->
     <a href="{% url 'create_item' %}">Report a Lost or Found Item</a>
 
+    <!-- search active listings by name, description, or location -->
+    <form method="get" action="{% url 'item_list' %}">
+        <label for="search">Search items:</label>
+        <input type="search" id="search" name="q" value="{{ query }}" placeholder="Search items or locations">
+        <button type="submit">Search</button>
+        <a href="{% url 'item_list' %}">Clear</a>
+    </form>
+
     <!-- display each active item -->
      {% for item in items %}
      <article>
@@ -27,14 +35,23 @@
         {% if item.photo %}
             <img src="{{ item.photo.url }}" alt="Photo of {{ item.name }}" width="300">
         {% endif %}
-        <!-- display delete link only for item creator -->
+        <!-- display edit/delete link only for item creator -->
         {% if item.created_by == user %}
-            <p><a href="{% url 'delete_item' item.pk %}">Delete</a></p>
+            <p>
+                <a href="{% url 'edit_item' item.pk %}">Edit</a>
+                <a href="{% url 'delete_item' item.pk %}">Delete</a>
+            </p>
         {% endif %}
-     </article>
+    </article>
+    
+    <!-- display message when no items are found -->
+    {% empty %}
+        {% if query %}
+            <p>No items match your search.</p>
+        {% else %}
+            <p>No active items.</p>
+        {% endif %}
 
-     {% empty %}
-        <p>No active items.</p>
     {% endfor %}
 
    <!-- return to homepage link -->
