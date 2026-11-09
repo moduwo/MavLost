@@ -125,3 +125,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # URL and storage location for uploaded files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# redirect to homepage after login w/ no next page specified
+LOGIN_REDIRECT_URL = 'home'
+
