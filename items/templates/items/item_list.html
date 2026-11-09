@@ -27,6 +27,10 @@
         {% if item.photo %}
             <img src="{{ item.photo.url }}" alt="Photo of {{ item.name }}" width="300">
         {% endif %}
+        <!-- display delete link only for item creator -->
+        {% if item.created_by == user %}
+            <p><a href="{% url 'delete_item' item.pk %}">Delete</a></p>
+        {% endif %}
      </article>
 
      {% empty %}
