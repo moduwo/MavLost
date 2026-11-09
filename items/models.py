@@ -25,7 +25,7 @@ class Item(models.Model):
     date_lost_or_found = models.DateField()
 
     # optional time when found/lost
-    time_found = models.TimeField(blank=True, null=True)
+    time_lost_or_found = models.TimeField(blank=True, null=True)
 
     # optional photo of lost/found item
     photo = models.ImageField(upload_to="items/", blank=True)

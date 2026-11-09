@@ -12,7 +12,7 @@ class ItemForm(forms.ModelForm):
             'report_type',
             'location',
             'date_lost_or_found',
-            'time_found',
+            'time_lost_or_found',
             'photo',
         ]
 

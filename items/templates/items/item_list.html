@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Listings | MavLost</title>
+</head>
+<body>
+   <h1>Lost and Found Items</h1>
+
+    <!-- link to lost/found item report form -->
+    <a href="{% url 'create_item' %}">Report a Lost or Found Item</a>
+
+    <!-- display each active item -->
+     {% for item in items %}
+     <article>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p>Report type: {{ item.get.report_type_display }}</p>
+        <p>Status: {{ item.get.status_display }}</p>
+        <p>Location: {{ item.location }}</p>
+        <p>Date lost or found: {{ item.date_lost_or_found }}</p>
+        <!-- display optional time and photo if provided -->
+        {% if item.time_lost_or_found %}
+            <p>Time found: {{ item.date_lost_or_found }}</p>
+        {% endif %}
+        {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="Photo of {{ item.name }}" width="300">
+        {% endif %}
+     </article>
+
+     {% empty %}
+        <p>No active items.</p>
+    {% endfor %}
+
+   <!-- return to homepage link -->
+   <a href="{% url 'home' %}">Back to homepage</a>
+
+</body>
+</html>
