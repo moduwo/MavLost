@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Item | MavLost</title>
+</head>
+<body>
+   <h1>Report a Lost or Found Item</h1>
+
+   <!-- submit form for reporting lost/found item -->
+   <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}    
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+   </form>
+
+   <!-- link to return to homepage -->
+   <a href="{% url 'home' %}">Back to homepage</a>
+
+</body>
+</html>

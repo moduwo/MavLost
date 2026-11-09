@@ -19,9 +19,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include,path
 
-# define URL routes for admin site and items app
+# define URL routes for admin, user accounts, and items
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('items.urls')),
 ]
 # serve uploaded files (for local) *RECONFIGURE AFTER CLOUD DEPLOYMENT*
