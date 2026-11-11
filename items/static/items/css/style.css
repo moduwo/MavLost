@@ -101,3 +101,204 @@ main {
     width: 100%;
     height: auto;
 }
+
+.item-action-link {
+    color: #c8102e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.item-action-link:hover {
+    text-decoration: underline;
+}
+
+.link-separator {
+    font-weight: 900;
+    margin: 0 4px;
+    color: #c8102e;
+}
+
+.item-form-page {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.item-form-page h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.item-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0,0 0, 0.1);
+}
+
+.item-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.item-form input,
+.item-form select,
+.item-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: border-box;
+    font: inherit;
+}
+
+.item-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.item-form button[type="submit"] {
+    background-color: #c8102e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.item-form button[type="submit"]:hover {
+    background-color: #a00d25;
+}
+
+.item-form-page .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c8102e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.item-form-page .back-link:hover {
+    text-decoration: underline;
+}
+
+.login-page {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.login-page h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-form p {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+.login-form button[type="submit"] {
+    background-color: #c8102e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-form button[type="submit"]:hover {
+    background-color: #a00d25;
+}
+
+.login-page .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c8102e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-page .back-link:hover {
+    text-decoration: underline;
+}
+
+.delete-page {
+    width: 90%;
+    max-width: 550px;
+    margin: 60px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.delete-page h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.delete-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.delete-form p {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.delete-form button[type="submit"] {
+    background-color: #c8102e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.delete-form button[type="submit"]:hover {
+    background-color: #a00d25;
+}
+
+.delete-page .cancel-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #c8102e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.delete-page .cancel-link:hover {
+    text-decoration: underline;
+}

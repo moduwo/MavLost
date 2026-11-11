@@ -128,4 +128,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # redirect to homepage after login w/ no next page specified
 LOGIN_REDIRECT_URL = 'home'
-
+LOGOUT_REDIRECT_URL = "/"
