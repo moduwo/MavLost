@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MavLost</title>
-</head>
-<body>
-   <h1>Welcome to MavLost</h1>
-   <p>Report lost items and find items around campus.</p>
+{% extends "base.html" %}
 
-   <!-- link to lost/found item report form -->
-    <a href="{% url 'create_item' %}">Report a Lost or Found Item</a>
-    <!-- link to lost/found item listings -->
-    <p><a href="{% url 'item_list' %}">View Lost and Found Items</a></p>
-</body>
-</html>
+{% block title %}Home | MavLost{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to MavLost</h1>
+
+    <p>
+        Lost or found something on campus? Browse the listings
+        or make a report.
+    </p>
+
+    <div class="home-links">
+        <a class="button" href="{% url 'item_list' %}">
+            Browse Items
+        </a>
+
+        <a class="button" href="{% url 'create_item' %}">
+            Report an Item
+        </a>
+    </div>
+</div>
+{% endblock %} 
