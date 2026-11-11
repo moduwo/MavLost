@@ -37,7 +37,7 @@
         </select>
 
         <button type="submit">Search</button>
-        <a href="{% url 'item_list' %}">Clear</a>
+        <a href="{% url 'item_list' %}" class="item-action-link">Clear</a>
     </form>
 
     <!-- Show the items -->
@@ -66,8 +66,9 @@
 
             {% if item.created_by == user %}
                 <p>
-                    <a href="{% url 'edit_item' item.pk %}">Edit</a> |
-                    <a href="{% url 'delete_item' item.pk %}">Delete</a>
+                    <a href="{% url 'edit_item' item.pk %}" class="item-action-link">Edit</a>
+                    <span class="link-separator">|</span>
+                    <a href="{% url 'delete_item' item.pk %}" class="item-action-link">Delete</a>
                 </p>
             {% endif %}
         </article>

@@ -24,6 +24,7 @@
                 {% if user.is_authenticated %}
                     <form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
+                        <input type="hidden" name="next" value="{% url 'home' %}">
                         <button class="nav-button"type="submit">Log Out</button>
                     </form>
                 {% else %}
