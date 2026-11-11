@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MavLost{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'items/css/style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a class="brand" href="{% url 'home' %}">
+                <img
+                    src="{% static 'items/images/mavlost-logo.png' %}"
+                    alt="MavLost Logo"
+                >
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="{% url 'item_list' %}">Browse Items</a>
+                <a href="{% url 'create_item' %}">Report an Item</a>
+
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="nav-button"type="submit">Log Out</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Log In</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>MavLost - Helping the UNO campus find their lost items.</p>
+        </div>
+    </footer>
+</body>
+</html>

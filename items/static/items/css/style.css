@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.site-header {
+    border-bottom: 2px solid #ed1c2e;
+}
+
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.brand img {
+    width: 150px;
+    height: auto;
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-nav a,
+.main-nav button {
+    color: #222;
+    font: inherit;
+    text-decoration: none;
+}
+
+.main-nav form {
+    margin: 0;
+}
+
+.main-nav button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+main {
+    min-height: 300px;
+    padding: 40px 0;
+}
+
+.home-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background: #c91427;
+    color: white;
+    text-decoration: none;
+}
+
+.button:hover {
+    background: #a71020;
+}
+
+.site-footer {
+    padding: 15px 0;
+    border-top: 1px solid #ddd;
+    color: #555;
+    font-size: 14px;
+}
+
+.item {
+    margin-top: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.item h2 {
+    margin-top: 0;
+}
+
+.item-photo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}

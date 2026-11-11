@@ -1,70 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Listings | MavLost</title>
-</head>
-<body>
-   <h1>Lost and Found Items</h1>
+{% extends "base.html" %}
 
-    <!-- link to lost/found item report form -->
-    <a href="{% url 'create_item' %}">Report a Lost or Found Item</a>
+{% block title %}Browse Items | MavLost{% endblock %}
 
-    <!-- search active listings by name, description, or location -->
+{% block content %}
+<div class="container">
+    <h1>Lost & Found Items</h1>
+
+    <p>Search for an item or browse the listings below.</p>
+
+    <p>
+        <a class="button" href="{% url 'create_item' %}">
+            Report missing item
+        </a>
+    </p>
+
+    <!-- Search and filter -->
     <form method="get" action="{% url 'item_list' %}">
-        <label for="search">Search items:</label>
-        <input type="search" id="search" name="q" value="{{ query }}" placeholder="Search items or locations">
-        
-        <!-- filter items by lost/found -->
-        <label for="report_type">Report type:</label>
+        <label for="search">Search:</label>
+        <input
+            type="search"
+            id="search"
+            name="q"
+            value="{{ query }}"
+            placeholder="Item or location"
+        >
+
+        <label for="report_type">Type:</label>
         <select id="report_type" name="report_type">
-            <option value="">All types:</option>
-            <option value="lost" {% if report_type == 'lost' %}selected{% endif %}>Lost</option>
-            <option value="found" {% if report_type == 'found' %}selected{% endif %}>Found</option>
+            <option value="">All</option>
+            <option value="lost" {% if report_type == 'lost' %}selected{% endif %}>
+                Lost
+            </option>
+            <option value="found" {% if report_type == 'found' %}selected{% endif %}>
+                Found
+            </option>
         </select>
 
         <button type="submit">Search</button>
         <a href="{% url 'item_list' %}">Clear</a>
     </form>
 
-    <!-- display each active item -->
-     {% for item in items %}
-     <article>
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.description }}</p>
-        <p>Report type: {{ item.get_report_type_display }}</p>
-        <p>Status: {{ item.get_status_display }}</p>
-        <p>Location: {{ item.location }}</p>
-        <p>Date lost or found: {{ item.date_lost_or_found }}</p>
-        <!-- display optional time and photo if provided -->
-        {% if item.time_lost_or_found %}
-            <p>Time lost or found: {{ item.time_lost_or_found }}</p>
-        {% endif %}
-        {% if item.photo %}
-            <img src="{{ item.photo.url }}" alt="Photo of {{ item.name }}" width="300">
-        {% endif %}
-        <!-- display edit/delete link only for item creator -->
-        {% if item.created_by == user %}
-            <p>
-                <a href="{% url 'edit_item' item.pk %}">Edit</a>
-                <a href="{% url 'delete_item' item.pk %}">Delete</a>
-            </p>
-        {% endif %}
-    </article>
-    
-    <!-- display message when no items are found -->
+    <!-- Show the items -->
+    {% for item in items %}
+        <article class="item">
+            <h2>{{ item.name }}</h2>
+
+            <p><strong>Type:</strong> {{ item.get_report_type_display }}</p>
+            <p><strong>Description:</strong> {{ item.description }}</p>
+            <p><strong>Location:</strong> {{ item.location }}</p>
+            <p><strong>Date:</strong> {{ item.date_lost_or_found }}</p>
+
+            {% if item.time_lost_or_found %}
+                <p><strong>Time:</strong> {{ item.time_lost_or_found }}</p>
+            {% endif %}
+
+            <p><strong>Status:</strong> {{ item.get_status_display }}</p>
+
+            {% if item.photo %}
+                <img
+                    class="item-photo"
+                    src="{{ item.photo.url }}"
+                    alt="Photo of {{ item.name }}"
+                >
+            {% endif %}
+
+            {% if item.created_by == user %}
+                <p>
+                    <a href="{% url 'edit_item' item.pk %}">Edit</a> |
+                    <a href="{% url 'delete_item' item.pk %}">Delete</a>
+                </p>
+            {% endif %}
+        </article>
     {% empty %}
         {% if query or report_type %}
-            <p>No items match your search or filter.</p>
+            <p>No items match your search</p>
         {% else %}
-            <p>No active items.</p>
+            <p>There are no active items yet</p>
         {% endif %}
-
     {% endfor %}
-
-   <!-- return to homepage link -->
-   <a href="{% url 'home' %}">Back to homepage</a>
-
-</body>
-</html>
+</div>
+{% endblock %}
